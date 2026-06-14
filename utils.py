@@ -50,6 +50,30 @@ def read_image(image):
     '''
     return None
 
+def work(board, index):
+    '''
+    Recursive function to insert a number and check if valid
+    '''
+
+    newboard = board
+    firstsquare = board.find("0", index)
+    if firstsquare < 0:
+        print_board(newboard) #this should be a solution: valid board with no more empty squares
+        return
+
+    for x in range(1, 10):
+        newboard = board[0:firstsquare] + str(x) + board[firstsquare+1:81]
+        #print_board(newboard)
+        if valid(newboard):
+            work(newboard, index+1)
+    
+    return
+
+def valid(board):
+    return True
+
 if __name__ == "__main__":
     sample_board = "900508007080302905054000080070680032100004008500219060000906001726001040001470056"
-    print_board(sample_board)
+
+    work(sample_board, 0)
+    # print_board(sample_board)
