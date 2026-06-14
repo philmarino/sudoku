@@ -16,20 +16,21 @@ def valid_check(board):
     columns = [board[i::9] for i in range(9)]
     nonants = [board[i:i+3] + board[i+9:i+12] + board[i+18:i+21] for i in nonant_starts]
 
-    for pos, value in enumerate(rows):
+    #for pos, value in enumerate(rows + columns + nonants):
+    for value in rows + columns + nonants:
         if bool(re.search(r'([^0]).*\1', value)):
-            print(f'Issue at row {pos + 1}')
+            # print(f'Issue at row {pos + 1}')
             return False
             
-    for pos, value in enumerate(columns):
-        if bool(re.search(r'([^0]).*\1', value)):
-            print(f'Issue at col {pos + 1}')
-            return False
+    # for pos, value in enumerate(columns):
+    #     if bool(re.search(r'([^0]).*\1', value)):
+    #         # print(f'Issue at col {pos + 1}')
+    #         return False
 
-    for pos, value in enumerate(nonants):
-        if bool(re.search(r'([^0]).*\1', value)):
-            print(f'Issue at nonant {pos + 1}')
-            return False
+    # for pos, value in enumerate(nonants):
+    #     if bool(re.search(r'([^0]).*\1', value)):
+    #         # print(f'Issue at nonant {pos + 1}')
+    #         return False
     
     return True
 

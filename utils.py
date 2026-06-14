@@ -1,3 +1,5 @@
+import valid_check as vc
+
 def print_board(board):
     '''
     Output the board as text
@@ -64,7 +66,7 @@ def work(board, index):
     for x in range(1, 10):
         newboard = board[0:firstsquare] + str(x) + board[firstsquare+1:81]
         #print_board(newboard)
-        if valid(newboard):
+        if vc.valid_check(newboard):
             work(newboard, index+1)
     
     return
@@ -73,7 +75,7 @@ def valid(board):
     return True
 
 if __name__ == "__main__":
-    sample_board = "900508007080302905054000080070680032100004008500219060000906001726001040001470056"
+    sample_board = "100034008070680030008210704054090680910508020080300005305906871006000040001070200"
 
     work(sample_board, 0)
     # print_board(sample_board)
